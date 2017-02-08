@@ -7,9 +7,10 @@ var Urls = mongoose.model('Urls', {
         minlength: 1,
         trim: true
     },
-    urlkey: {
-        type: Number,
-        default: null
+    shortlink: {
+        type: String,
+        required: true,
+        minlength: 1
     }
 });
 
