@@ -8,9 +8,8 @@ var {Urls} = require('./models/urls.js');
 
 var app = express();
 app.use(bodyParser.json());
-app.listen(port, () => {
-    console.log(`Started up at port ${port}`);
-});
+app.use(express.static('./public'));
+app.listen(port, () => console.log(`Started up on port ${port}`));
 
 app.get('/new/:url*', (req, res) => {
     if (!validateURL(req.url.slice(5))) {
