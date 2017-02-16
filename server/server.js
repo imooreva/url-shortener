@@ -3,7 +3,7 @@ const port = process.env.PORT || 3000; //port used for Heroku, otherwise 3000
 
 const {mongoose} = require('./db/mongoose.js');
 const {Urls} = require('./models/urls.js');
-const {validateURL, createNewURL, checkForDuplicates} = require('./functions.js');
+const {validateURL, createNewURL} = require('./functions.js');
 
 var app = express();
 app.use(express.static('./public'));
