@@ -12,7 +12,7 @@ app.listen(port, () => console.log(`Started up on port ${port}`));
 app.get('/new/:url*', (req, res) => {
     let slicedURL = req.url.slice(5);
     if (!validateURL(slicedURL)) {
-        return res.status(400).send({error: "Invalid URL"});
+        return res.status(400).send({error: 'Invalid URL'});
     }
     createNewURL(slicedURL).save().then((doc) => {
         res.send({
@@ -29,12 +29,10 @@ app.get('/:id', (req, res) => {
         shortlink: req.params.id
     }).then((url) => {
         let redirecturl = url[0].url;
-        //console.log('Redirect to:', redirecturl);
         res.redirect(redirecturl);
     }).catch((e) => {
-        res.status(404).send({error: 'shortened URL ID not found'});
+        res.status(404).send({error: 'Shortened URL ID not found'});
     });
-
 });
 
 module.exports = {app};
