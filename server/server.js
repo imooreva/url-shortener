@@ -7,7 +7,7 @@ const {validateURL, createNewURL} = require('./functions.js');
 
 var app = express();
 app.use(express.static('./public'));
-app.listen(port, () => console.log(`Started up on port ${port}`));
+if (!module.parent) { app.listen(port, () => console.log(`Started up on port ${port}`)) };
 
 app.get('/new/:url*', (req, res) => {
     let slicedURL = req.url.slice(5);

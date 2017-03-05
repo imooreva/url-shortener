@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "test": "mocha server/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,10 @@
     "express": "^4.14.0",
     "mongodb": "^2.2.16",
     "mongoose": "^4.7.4"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "supertest": "^3.0.0"
   }
 }
