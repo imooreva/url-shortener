@@ -28,6 +28,7 @@ app.get('/new/:url*', (req, res) => {
 });
 
 //search for shortened URL ID in database, then redirect user if shortened URL ID is found
+//if not found, send JSON response with error
 app.get('/:id', (req, res) => {
     Urls.find({
         shortlink: req.params.id
