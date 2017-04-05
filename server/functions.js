@@ -6,6 +6,7 @@ const validateURL = (url) => {
     return regex.test(url);
 };
 
+//generate string using six random alphanumeric characters
 const createNewURL = (url) => {
     return new Urls({
         url,

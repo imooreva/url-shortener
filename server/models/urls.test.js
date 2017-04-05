@@ -6,7 +6,7 @@ const request = require('supertest');
 
 describe('GET /new', () => {
     
-    it('should create a new shortened URL', (done) => {
+    it('should generate a new shortened URL as a string with six characters', (done) => {
         request(app.listen())
             .get('/new/http://www.wikipedia.org')
             .expect(200)
@@ -15,22 +15,24 @@ describe('GET /new', () => {
                 expect(res.body.shortlink).toBeA('string')
                 expect(res.body.shortlink.length).toBe(6)
             })
-            .end(done);
+            done();
     });
     
     it('should forward user when existing shortened URL passed in app URL', (done) => {
         request(app.listen())
-            .get('/1um4pg')
+            //shortlink g3i067 is stored in local database and redirects to grubhub.com
+            .get('/g3i067')
             .on('response', (res) => {
                 expect(302)
+                console.log(res)
             })
-            .end(done);
+            done();
     });
     
     it('should forward user when generated shortened URL passed in app URL', (done) => {
         var newUrl;
         request(app.listen())
-            .get('/new/http://www.wikipedia.org')
+            .get('/new/http://www.facebook.com')
             .on('response', (res) => {
                 expect(200)
                 newUrl = res.body.shortlink
