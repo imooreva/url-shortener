@@ -1,17 +1,18 @@
+//require modules, plus external functions and URL schema/model
 const express = require('express');
-const port = process.env.PORT || 3000; //port used for Heroku, otherwise 3000
-
-//external functions and URL schema/model
 const {mongoose} = require('./db/mongoose.js');
 const {Urls} = require('./models/urls.js');
 const {validateURL, createNewURL} = require('./functions.js');
 
+//configure express and start listening
 var app = express();
 app.use(express.static('./public'));
-if (!module.parent) { app.listen(port, () => console.log(`Started up on port ${port}`)) };
+const port = process.env.PORT || 3000; //port used for Heroku, otherwise 3000
+if (!module.parent) { app.listen(port, () => console.log(`Started up on port ${port}`)) }; //conditional statement prevents EADDRINUSE error when running mocha/supertest
 
+//route for new shortened URL
 app.get('/new/:url*', (req, res) => {
-    //trims "/new/" from req.url, then validates
+    //trims "/new/" from req.url, then validate with validateURL()
     let slicedURL = req.url.slice(5);
     if (!validateURL(slicedURL)) {
         return res.status(400).send({error: 'Invalid URL'});
