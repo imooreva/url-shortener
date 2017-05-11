@@ -41,4 +41,7 @@ app.get('/:id', (req, res) => {
     });
 });
 
+//handle console error by sending 'No Content' 204 status
+app.get('/favicon.ico', (req, res) => res.sendStatus(204));
+
 module.exports = {app};

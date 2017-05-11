@@ -1,10 +1,43 @@
 body {
-    background: #333;
-    color: #BAFCC0;
+    background: #333333;
+    color: #54F8F8;
     font-family: 'Raleway', sans-serif;
-    font-size: 1.0rem;
+    font-size: 1.125rem;
 }
 
 p {
-    color: #AF6;
+    color: #E7FEFE;
+}
+
+#hr1 {
+    border: 1px solid #069393;
+    margin-top: 2rem;
+}
+
+#footer {
+    margin-top: 2rem;
+}
+
+#footer>a {
+    color: #0AF5F5;
+    text-decoration: none;
+}
+
+#footer>a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 420px) {
+    #heading-1 {
+        font-size: 1.5rem;
+    }
+    #heading-2 {
+        font-size: 1.125rem;
+    }
+    body {
+        font-size: 0.875rem;
+    }
+    #hr1, #footer {
+        margin-top: 1.25rem
+    }
 }
