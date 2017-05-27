@@ -1,47 +1,16 @@
-//require modules, plus external functions and URL schema/model
-const express = require('express');
-const {mongoose} = require('./db/mongoose.js');
-const {Urls} = require('./models/urls.js');
-const {validateURL, createNewURL} = require('./functions.js');
+var express = require('express');
+var helmet = require('helmet');
+var path = require('path');
 
-//configure express and start listening
+//configure express app and start listening
 var app = express();
-app.use(express.static('./public'));
-const port = process.env.PORT || 3000; //port used for Heroku, otherwise 3000
-if (!module.parent) { app.listen(port, () => console.log(`Started up on port ${port}`)) }; //conditional statement prevents EADDRINUSE error when running mocha/supertest
+const PATH = path.join(__dirname, '../public');
 
-//route for new shortened URL
-app.get('/new/:url*', (req, res) => {
-    //trims "/new/" from req.url, then validate with validateURL()
-    let slicedURL = req.url.slice(5);
-    if (!validateURL(slicedURL)) {
-        return res.status(400).send({error: 'Invalid URL'});
-    }
-    //create and save new URL to mongoDB
-    createNewURL(slicedURL).save().then((doc) => {
-        res.send({
-            url: doc.url,
-            shortlink: doc.shortlink
-        });
-    }).catch((e) => {
-        res.status(500).send(e);
-    });
-});
+app.use(helmet());
+app.use(express.static(PATH));
+app.use(require('./routes-api.js'));
 
-//search for shortened URL ID in database, then redirect user if shortened URL ID is found
-//if not found, send JSON response with error
-app.get('/:id', (req, res) => {
-    Urls.find({
-        shortlink: req.params.id
-    }).then((url) => {
-        let redirecturl = url[0].url;
-        res.redirect(redirecturl);
-    }).catch((e) => {
-        res.status(404).send({error: 'Shortened URL ID not found'});
-    });
-});
-
-//handle console error by sending 'No Content' 204 status
-app.get('/favicon.ico', (req, res) => res.sendStatus(204));
+const PORT = process.env.PORT || 3000; //port used for Heroku, otherwise 3000
+if (!module.parent) { app.listen(PORT, () => console.log(`Started up on port ${PORT}`)) }; //conditional statement prevents EADDRINUSE error when running mocha/supertest
 
 module.exports = {app};
