@@ -8,13 +8,25 @@
         <link href="/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1 id="heading-1">URL Shortener Microservice</h1>
-        <p>Pass a valid URL and the app generates a shortened URL using six alphanumeric characters. An object containing the original URL and shortened URL should be returned.</p>
-        <p>Pass a valid shortened URL and the app will redirect your browser to the original.</p>
-        <h2 id="heading-2">Usage Examples:</h2>
-        <p>Create a new shortened URL:<br>https://peaceful-citadel-24973.herokuapp.com/api/new/http://www.google.com</p>
-        <p>Use a shortened URL:<br>https://peaceful-citadel-24973.herokuapp.com/api/abcxyz</p>
-        <hr id="hr1">
-        <p id="footer">Author's source code on <a href="https://github.com/imooreva/url-shortener" target="_blank">Github</a>.</p>
+        <h1 id="heading-1">URL Shortener Microservice</h1>        
+        <p>Pass a valid URL and the app generates a shortened URL using six alphanumeric characters.</p>
+        <p>Pass a valid shortened URL and the app will redirect your browser to the original URL.</p>
+        <h2 id="heading-2">Usage Methods &amp; Examples:</h2>
+        <form action="new" method="GET">
+            <label for="post-url-input">POST via input:</label><br>
+            <input class="url-form-input" id="post-url-input" type="text" name="url" value="http://www.google.com" required>
+            <input type="submit" value="Create New URL">
+        </form><br>
+        <form action="get" method="GET">
+            <label for="get-url-input">GET via input:</label><br>
+            <input class="url-form-input" id="get-url-input" type="text" name="shortened" value="aBcDeF" required/\>
+            <input type="submit" value="Get Shortened URL">
+        </form>
+        <div id="url-methods">
+            <p>Create shortened link in URL:<br><span class="link-example">[project_url]/api/new/http://www.google.com</span></p>
+            <p>Retrieve shortened link via URL:<br><span class="link-example">[project_url]/api/abcxyz</span></p>
+            <hr id="hr1">
+            <p id="footer">Author's source code on <a href="https://github.com/imooreva/url-shortener" target="_blank">Github</a>.</p>
+        </div>
     </body>    
 </html>
