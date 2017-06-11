@@ -1,12 +1,12 @@
 var express = require('express');
-var helmet = require('helmet');
+//var helmet = require('helmet');
 var path = require('path');
 
 //configure express app and start listening
 var app = express();
 const PATH = path.join(__dirname, '../public');
 
-app.use(helmet());
+//app.use(helmet());
 app.use(express.static(PATH));
 app.use(require('./routes-api.js'));
 

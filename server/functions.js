@@ -16,18 +16,21 @@ var createNewURL = (req, res) => {
     //If nothing returned, create and save new shortened URL document
     Urls.findOne({
         url: slicedURL
-    }, (err, stored) => {
-        if (err) { return }
-        if (stored) {
-            console.log('it does exist');
-            return res.status(200).send(stored);
+    }, (err, result) => {
+        if (err) {
+            return console.log(err);
+        }
+        if (result) {
+            return res.status(200).send(result);
         } else {
             let newURL = new Urls({
                 url: slicedURL,
                 shortlink: Math.random().toString(36).substr(2, 6)
             });
             newURL.save((err) => {
-                if (err) { return }
+                if (err) {
+                    return console.log(err);
+                }
                 res.status(200).send(newURL);
             });
         }

@@ -1,9 +1,9 @@
-var Urls = require('./urls.js');
-var {app} = require('./../server.js');
-var {router} = require('./../routes-api.js');
-var {validateURL} = require('./../functions.js');
 var expect = require('expect');
 var request = require('supertest');
+var Urls = require('./urls.js');
+var {app} = require('./../server.js');
+//var {router} = require('./../routes-api.js');
+var {validateURL} = require('./../functions.js');
 
 describe('URL tests', () => {
     

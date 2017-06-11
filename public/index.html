@@ -13,18 +13,18 @@
         <p>Pass a valid shortened URL and the app will redirect your browser to the original URL.</p>
         <h2 id="heading-2">Usage Methods &amp; Examples:</h2>
         <form action="new" method="GET">
-            <label for="post-url-input">POST via input:</label><br>
+            <label for="post-url-input">Create shortened link via input:</label><br>
             <input class="url-form-input" id="post-url-input" type="text" name="url" value="http://www.google.com" required>
-            <input type="submit" value="Create New URL">
+            <input type="submit" class="url-form-submit" value="Create New URL">
         </form><br>
         <form action="get" method="GET">
-            <label for="get-url-input">GET via input:</label><br>
+            <label for="get-url-input">Retrieve shortened link via input:</label><br>
             <input class="url-form-input" id="get-url-input" type="text" name="shortened" value="aBcDeF" required/\>
-            <input type="submit" value="Get Shortened URL">
+            <input type="submit" class="url-form-submit" value="Get Shortened URL">
         </form>
         <div id="url-methods">
-            <p>Create shortened link in URL:<br><span class="link-example">[project_url]/api/new/http://www.google.com</span></p>
-            <p>Retrieve shortened link via URL:<br><span class="link-example">[project_url]/api/abcxyz</span></p>
+            <p>Create via URL:<br><span class="link-example">GET /api/new/http://www.google.com</span></p>
+            <p>Retrieve via URL:<br><span class="link-example">GET /api/abcxyz</span></p>
             <hr id="hr1">
             <p id="footer">Author's source code on <a href="https://github.com/imooreva/url-shortener" target="_blank">Github</a>.</p>
         </div>
