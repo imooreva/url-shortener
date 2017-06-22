@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>URL Shortener Microservice</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta charset="UTF-8"/>
-        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css" />
-        <link href="/style.css" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link href="normalize.min.css" rel="stylesheet" type="text/css">
+        <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <h1 id="heading-1">URL Shortener Microservice</h1>        
@@ -14,19 +15,19 @@
         <h2 id="heading-2">Usage Methods &amp; Examples:</h2>
         <form action="new" method="GET">
             <label for="post-url-input">Create shortened link via input:</label><br>
-            <input class="url-form-input" id="post-url-input" type="text" name="url" value="http://www.google.com" required>
-            <input type="submit" class="url-form-submit" value="Create New URL">
+            <input class="url-form-input tabbed" id="post-url-input" type="text" name="url" value="http://www.google.com" required tabindex="1">
+            <input type="submit" class="url-form-submit tabbed" value="Create New URL" tabindex="2">
         </form><br>
         <form action="get" method="GET">
             <label for="get-url-input">Retrieve shortened link via input:</label><br>
-            <input class="url-form-input" id="get-url-input" type="text" name="shortened" value="aBcDeF" required/\>
-            <input type="submit" class="url-form-submit" value="Get Shortened URL">
+            <input class="url-form-input tabbed" id="get-url-input" type="text" name="shortened" value="aBcDeF" required tabindex="3">
+            <input type="submit" class="url-form-submit tabbed" value="Get Shortened URL" tabindex="4">
         </form>
         <div id="url-methods">
             <p>Create via URL:<br><span class="link-example">GET /api/new/http://www.google.com</span></p>
             <p>Retrieve via URL:<br><span class="link-example">GET /api/abcxyz</span></p>
             <hr id="hr1">
-            <p id="footer">Author's source code on <a href="https://github.com/imooreva/url-shortener" target="_blank">Github</a>.</p>
+            <p id="gitlink">Source code on <a href="https://github.com/imooreva/url-shortener" target="_blank" class="tabbed" tabindex="5">Github</a>.</p>
         </div>
     </body>    
 </html>
